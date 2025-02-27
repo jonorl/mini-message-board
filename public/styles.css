@@ -4,3 +4,38 @@ body {
     display: grid;
     justify-items: center;
 }
+
+.cards-container {
+    display: grid;
+    row-gap: 3vh;
+}
+
+.card {
+    display: grid;
+    border: 2px solid aliceblue;
+    padding: 10px;
+    justify-items: center;
+    max-height: fit-content;
+}
+
+.card > * {
+    margin: 0;
+}
+
+.date, .time {
+    justify-self: end;
+    font-size: 12px;
+}
+
+.message {
+    margin: 25px;
+    justify-self: baseline;
+}
+
+form {
+    display: grid;
+}
+
+.submit {
+    margin-top: 3vh;
+}
