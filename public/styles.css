@@ -14,16 +14,21 @@ body {
     display: grid;
     border: 2px solid aliceblue;
     padding: 10px;
-    justify-items: center;
     max-height: fit-content;
 }
 
 .card > * {
     margin: 0;
+    width: 33vw;
+    display: flex;
+}
+
+.user {
+    justify-content: center;  
 }
 
 .date, .time {
-    justify-self: end;
+    justify-content: end;
     font-size: 12px;
 }
 

@@ -1,6 +1,9 @@
-const { Router } = require("express");
+// Load Router
 
+const { Router } = require("express");
 const indexRouter = Router();
+
+// Optional, load express to format dates
 const moment = require('moment');
 
 indexRouter.get("/", (req, res) => {
@@ -16,5 +19,7 @@ indexRouter.get("/", (req, res) => {
 
   res.render("../views/index", { title: "Mini Messageboard", messagesFormattedDates: messagesFormattedDates });
 });
+
+// Always export back to app.js at the end
 
 module.exports = indexRouter;

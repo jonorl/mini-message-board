@@ -15,6 +15,8 @@
         <h3 class="date"><%=message.formattedDate%></h3>
         <h4 class="time"><%=message.formattedTime%></h4>
         <p class="message"><%=message.text%></p>
+        <!-- Link to details with params/queries  -->
+        <a href="/message?user=<%= encodeURIComponent(message.user) %>&date=<%= encodeURIComponent(message.formattedDate) %>&time=<%= encodeURIComponent(message.formattedTime) %>&message=<%= encodeURIComponent(message.text) %>" class="view-message-details">View message</a>
       </div>
       <%}) %>
     </div>
