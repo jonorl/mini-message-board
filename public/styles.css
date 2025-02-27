@@ -44,3 +44,19 @@ form {
 .submit {
     margin-top: 3vh;
 }
+
+a {
+    color: hsl(210, 100%, 55%); /* Adjust these values */
+  }
+  
+  a:visited {
+    color: hsl(285, 75%, 40%); /* Adjust these values for visited links */
+  }
+  
+  a:hover {
+    color: hsl(210, 100%, 70%); /* Lighter on hover */
+  }
+  
+  a:active {
+    color: hsl(210, 100%, 40%); /* Darker on click */
+  }
