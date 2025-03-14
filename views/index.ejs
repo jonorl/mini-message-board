@@ -9,14 +9,14 @@
     <h1 class="title"><%=title%></h1>
     <a href="/new" class="go-to-new">New message</a>
     <div class="cards-container">
-      <% messagesFormattedDates.forEach((message) => { %>
+      <% board.forEach((brd) => { %>
       <div class="card">
-        <h2 class="user"><%=message.user%></h2>
-        <h3 class="date"><%=message.formattedDate%></h3>
-        <h4 class="time"><%=message.formattedTime%></h4>
-        <p class="message"><%=message.text%></p>
+        <h2 class="user"><%=brd.username%></h2>
+        <h3 class="date"><%=brd.formattedDate%></h3>
+        <h4 class="time"><%=brd.formattedTime%></h4>
+        <p class="message"><%=brd.text%></p>
         <!-- Link to details with params/queries  -->
-        <a href="/message?user=<%= encodeURIComponent(message.user) %>&date=<%= encodeURIComponent(message.formattedDate) %>&time=<%= encodeURIComponent(message.formattedTime) %>&message=<%= encodeURIComponent(message.text) %>" class="view-message-details">View message</a>
+        <a href="/message?user=<%= encodeURIComponent(brd.username) %>&date=<%= encodeURIComponent(brd.formattedDate) %>&time=<%= encodeURIComponent(brd.formattedTime) %>&message=<%= encodeURIComponent(brd.text) %>" class="view-message-details">View message</a>
       </div>
       <%}) %>
     </div>

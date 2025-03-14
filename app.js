@@ -29,24 +29,24 @@ const PORT = process.env.PORT || 3000;
 
 // Array of objects with a couple of samples
 
-const messages = [
-  {
-    text: "Hi there!",
-    user: "Armando",
-    added: new Date(),
-  },
-  {
-    text: "Hello World!",
-    user: "Charles",
-    added: new Date(),
-  },
-];
+// const messages = [
+//   {
+//     text: "Hi there!",
+//     user: "Armando",
+//     added: new Date(),
+//   },
+//   {
+//     text: "Hello World!",
+//     user: "Charles",
+//     added: new Date(),
+//   },
+// ];
 
 // Add this code to pass messages as prop
-app.use((req, res, next) => {
-  req.messages = messages;
-  next(); 
-});
+// app.use((req, res, next) => {
+//   req.messages = messages;
+//   next(); 
+// });
 
 app.use("/", indexRouter);
 

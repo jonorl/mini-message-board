@@ -1,3 +1,5 @@
+const db = require("../db/queries");
+
 // Load Router
 
 const { Router } = require("express");
@@ -7,18 +9,31 @@ const indexRouter = Router();
 const moment = require('moment');
 
 indexRouter.get("/", (req, res) => {
-
   // Clone array and add new key values with dates and times formatted from Moment.  
-  const messagesFormattedDates = req.messages.map(message => {
-    return {
-      ...message,
-      formattedDate: moment(message.added).format('DD/MM/YY'),
-      formattedTime: moment(message.added).format('h:mm:ssa')
-    };
-  });
+    async function getUsernames(req, res) {
+      const board = await db.getAllUsernames();
 
-  res.render("../views/index", { title: "Mini Messageboard", messagesFormattedDates: messagesFormattedDates });
-});
+      board.map(brd => {
+
+        return {
+          ...board,
+          formattedDate: moment(board.date).format('DD/MM/YY'),
+          formattedTime: moment(board.date).format('h:mm:ssa')
+        }
+      });
+      res.render("../views/index", { title: "Mini Messageboard", board: board });
+    }
+    getUsernames(req, res)
+  })
+
+async function getUsernames(req, res) {
+  const usernames = await db.getAllUsernames();
+  console.log("Usernames: ", usernames);
+  // res.render("index", {
+  //   title: "Index",
+  //   usernames: usernames.map((user) => user.username).join(", "),
+  // });
+}
 
 // Always export back to app.js at the end
 
