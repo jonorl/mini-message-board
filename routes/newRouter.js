@@ -1,5 +1,6 @@
 // Load Router
 
+const db = require("../db/queries");
 const { Router } = require("express");
 const newRouter = Router();
 
@@ -12,14 +13,19 @@ newRouter.get("/", (req, res) =>
 // POST request getting data to variables and then pushed back to messages.
 
 newRouter.post("/", (req, res) => {
-  const messages = req.messages
   const newUser = req.body.name;
   const newMessage = req.body.message;
 
-  messages.push({ text: newMessage, user: newUser, added: new Date() });
+  // transform this line to SQL
+  // messages.push({ text: newMessage, user: newUser, added: new Date() });
 
-  // Redirect back to index when done
-  res.redirect("/")
+  async function postMessage(req, res) {
+    await db.insertMessage(newUser, newMessage);
+
+    // Redirect back to index when done
+    res.redirect("/");
+  }
+  postMessage(req, res)
 });
 
 // Always export back to app.js at the end

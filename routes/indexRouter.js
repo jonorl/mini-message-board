@@ -11,12 +11,12 @@ const moment = require("moment");
 indexRouter.get("/", (req, res) => {
   // Clone array and add new key values with dates and times formatted from Moment.
   async function getUsernames(req, res) {
-    let board = await db.getAllUsernames();
+    const board = await db.getAllUsernames();
 
-    function addKeyValuePair(data) {
+    function momentFormatting(data) {
       return data.map(obj => ({ ...obj, formattedDate: moment(obj.date).format("DD/MM/YY"), formattedTime: moment(obj.date).format("h:mm:ssa"),}));
     }
-    const modifiedBoard = addKeyValuePair(board);
+    const modifiedBoard = momentFormatting(board);
 
     res.render("../views/index", { title: "Mini Messageboard", board: modifiedBoard });
   }

@@ -1,4 +1,3 @@
-const { ppid } = require("process");
 const pool = require("./pool");
 
 async function getAllUsernames() {
@@ -6,6 +5,11 @@ async function getAllUsernames() {
   return rows;
 }
 
+async function insertMessage(username, text) {
+  await pool.query("INSERT INTO board (username, text) VALUES ($1, $2)", [username, text]);
+}
+
 module.exports = {
     getAllUsernames,
+    insertMessage,
   };
